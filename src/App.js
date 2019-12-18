@@ -17,13 +17,14 @@ class App extends Component {
       <Router>
         <div className="app">
         <NavBar />
+        <Switch>
          <Route path="/" exact component={Dashboard} />
          <Route path="/project/:id"  component={ProjectDetails} />
          <Route path="/SignIn" exact component={SignIn}/>
          <Route path="/SignUp" exact component={SignUp}/>
          <Route path="/Create" exact component={CreateProject}/>
 
-        <Switch>
+       
           
         </Switch>
         </div>

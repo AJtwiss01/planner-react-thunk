@@ -9,7 +9,7 @@ export const signIn = credentials => {
         dispatch({ type: "LOGIN_SUCCESS" });
       })
       .catch(err => {
-        const { message} = err
+        const { message } = err;
         dispatch({ type: "LOGIN_ERROR", message });
       });
   };
@@ -28,18 +28,18 @@ export const signOut = () => {
   };
 };
 
-export const signUp = (newUser) => {
-  return (dispatch, getState, { getFirebase, getFireStore }) => {
+export const signUp = newUser => {
+  return (dispatch, getState, { getFirebase, getFirestore }) => {
     const firebase = getFirebase();
-    const firestore = getFirebase();
+    const firestore = getFirestore();
 
     //create a firebase user
-    firebase.auth()
+    firebase
+      .auth()
       .createUserWithEmailAndPassword(newUser.email, newUser.password)
       .then(resp => {
         return firestore
-          .collection("user")
-          .add()
+          .collection("users")
           .doc(resp.user.uid)
           .set({
             firstName: newUser.firstName,
@@ -48,12 +48,12 @@ export const signUp = (newUser) => {
           });
       })
       .then(() => {
-        dispatchEvent({type: "SIGNUP_SUCCESS"})
+        dispatch({ type: "SIGNUP_SUCCESS" });
       })
       .catch(err => {
-        console.log(err.message)
-         const { message } = err 
-          dispatch({type: "SIGNUP_ERROR", message })
+        console.log(err.message);
+        const { message } = err;
+        dispatch({ type: "SIGNUP_ERROR", message });
       });
   };
 };
