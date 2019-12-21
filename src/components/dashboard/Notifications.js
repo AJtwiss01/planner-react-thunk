@@ -1,11 +1,21 @@
-import React from 'react';
+import React from "react";
 
-const Notifications = () => {
-    return (
-        <div>
-            <p>Notification</p>
+const Notifications = (props) => {
+  return (
+    <div className="section">
+      <div className="card z-dept-0">
+        <div className="card-content">
+          <span className="card-title"></span>
+          <ul className="notifications">
+            <li>Notification</li>
+            <li>Notification</li>
+            <li>Notification</li>
+            <li>Notification</li>
+          </ul>
         </div>
-      );
-}
- 
+      </div>
+    </div>
+  );
+};
+
 export default Notifications;
